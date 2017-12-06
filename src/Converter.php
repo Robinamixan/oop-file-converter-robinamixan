@@ -6,12 +6,13 @@ namespace FileConverter;
 
 class Converter
 {
-    public function __construct(/* ??? */)
+    public function __construct()
     {
     }
 
     public function convert(\SplFileObject $file, string $outputFormat, string $outputFilePath)
     {
-        // TODO implement it
+        $contain = Reader::choose_format($file);
+        var_dump($contain);
     }
 }
