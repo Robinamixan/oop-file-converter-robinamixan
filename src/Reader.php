@@ -4,21 +4,21 @@ declare(strict_types=1);
 
 namespace FileConverter;
 
-use FileConverter\CSV\CSVreader;
-use FileConverter\JSON\JSONreader;
-use FileConverter\XML\XMLreader;
+use FileConverter\CSV\CSVReader;
+use FileConverter\JSON\JSONReader;
+use FileConverter\XML\XMLReader;
 
 class Reader
 {
-    public static function choose_format(\SplFileObject $file):array
+    public static function load_file(\SplFileObject $file): array
     {
         $type = $file->getExtension();
         if ($type == "json"){
-            return JSONreader::get_contain($file);
+            return JSONReader::get_contain($file);
         } elseif ($type == "xml"){
-            return XMLreader::get_contain($file);
+            return XMLReader::get_contain($file);
         } elseif ($type == "csv"){
-            return CSVreader::get_contain($file);
+            return CSVReader::get_contain($file);
         } else{
             echo "необрабатываемый формат";
             return [];

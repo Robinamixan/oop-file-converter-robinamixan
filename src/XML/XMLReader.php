@@ -8,12 +8,12 @@
 
 namespace FileConverter\XML;
 
-class XMLreader
+class XMLReader
 {
-    public static function get_contain(\SplFileObject $file):array
+    public static function get_contain(\SplFileObject $file): array
     {
-        $cont = simplexml_load_file($file->getPathname());
-        $xml = simplexml_load_string($cont->asXML(), "SimpleXMLElement", LIBXML_NOCDATA);
+        $cont = file_get_contents($file->getPathname());
+        $xml = simplexml_load_string($cont, "SimpleXMLElement");
         $json = json_encode($xml);
         $array = json_decode($json,TRUE);
         return $array;

@@ -12,7 +12,7 @@ class Converter
 
     public function convert(\SplFileObject $file, string $outputFormat, string $outputFilePath)
     {
-        $contain = Reader::choose_format($file);
-        var_dump($contain);
+        $contain = Reader::load_file($file);
+        Saver::save_file_in_format($contain, $outputFormat, $outputFilePath);
     }
 }

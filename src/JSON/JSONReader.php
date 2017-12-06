@@ -8,9 +8,9 @@
 
 namespace FileConverter\JSON;
 
-class JSONreader
+class JSONReader
 {
-    public static function get_contain(\SplFileObject $file):array
+    public static function get_contain(\SplFileObject $file): array
     {
         $contain = json_decode($file, true);
         return $contain;
