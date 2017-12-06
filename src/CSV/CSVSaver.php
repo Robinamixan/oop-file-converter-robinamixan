@@ -13,6 +13,11 @@ class CSVSaver
 {
     public static function save(array $contain, string $outputFilePath): void
     {
-
+        var_dump($contain);
+        $fp = fopen($outputFilePath, 'w');
+        foreach($contain as $row) {
+            fputcsv($fp, $row);
+        }
+        fclose($fp);
     }
 }
