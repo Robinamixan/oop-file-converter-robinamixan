@@ -13,8 +13,8 @@ class JSONSaver
 {
     public static function save(array $contain, string $outputFilePath): void
     {
-        $fp = fopen($outputFilePath, "w");
-        fwrite($fp, json_encode($contain));
-        fclose($fp);
+        $file = fopen($outputFilePath, "w");
+        fwrite($file, json_encode($contain));
+        fclose($file);
     }
 }

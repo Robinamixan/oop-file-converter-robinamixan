@@ -10,7 +10,7 @@ use FileConverter\XML\XMLSaver;
 
 class Saver
 {
-    public static function save_file_in_format(array $contain, string $outputFormat, string $outputFilePath):void
+    public static function saveFileInFormat(array $contain, string $outputFormat, string $outputFilePath):void
     {
         if ($outputFormat == "json"){
             JSONSaver::save($contain, $outputFilePath);

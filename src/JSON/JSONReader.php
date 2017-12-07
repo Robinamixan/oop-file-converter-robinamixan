@@ -10,7 +10,7 @@ namespace FileConverter\JSON;
 
 class JSONReader
 {
-    public static function get_contain(\SplFileObject $file): array
+    public static function getContain(\SplFileObject $file): array
     {
         $contain = json_decode($file, true);
         return $contain;

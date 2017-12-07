@@ -10,10 +10,10 @@ namespace FileConverter\XML;
 
 class XMLReader
 {
-    public static function get_contain(\SplFileObject $file): array
+    public static function getContain(\SplFileObject $file): array
     {
-        $cont = file_get_contents($file->getPathname());
-        $xml = simplexml_load_string($cont, "SimpleXMLElement");
+        $contain = file_get_contents($file->getPathname());
+        $xml = simplexml_load_string($contain, "SimpleXMLElement");
         $json = json_encode($xml);
         $array = json_decode($json,TRUE);
         return $array;

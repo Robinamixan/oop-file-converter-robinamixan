@@ -12,7 +12,7 @@ use SebastianBergmann\CodeCoverage\Node\File;
 
 class CSVReader
 {
-    public static function get_contain(\SplFileObject $file): array
+    public static function getContain(\SplFileObject $file): array
     {
         $contain = array_map('str_getcsv', file($file->getPathname()));
         return $contain;

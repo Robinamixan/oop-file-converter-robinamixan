@@ -10,15 +10,15 @@ use FileConverter\XML\XMLReader;
 
 class Reader
 {
-    public static function load_file(\SplFileObject $file): array
+    public static function loadFile(\SplFileObject $file): array
     {
         $type = $file->getExtension();
         if ($type == "json"){
-            return JSONReader::get_contain($file);
+            return JSONReader::getContain($file);
         } elseif ($type == "xml"){
-            return XMLReader::get_contain($file);
+            return XMLReader::getContain($file);
         } elseif ($type == "csv"){
-            return CSVReader::get_contain($file);
+            return CSVReader::getContain($file);
         } else{
             echo "необрабатываемый формат";
             return [];
