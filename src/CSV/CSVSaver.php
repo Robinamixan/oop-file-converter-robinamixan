@@ -3,11 +3,13 @@
 namespace FileConverter\CSV;
 
 
-class CSVSaver
+use FileConverter\iSaver;
+
+class CSVSaver implements iSaver
 {
-    public static function save(array $contain, string $outputFilePath): void
+    public function saveArrayInFile(array $contain, string $output_file_path): void
     {
-        $file = fopen($outputFilePath, 'w');
+        $file = fopen($output_file_path, 'w');
         foreach($contain as $row) {
             fputcsv($file, $row);
         }

@@ -8,9 +8,11 @@
 
 namespace FileConverter\XML;
 
-class XMLReader
+use FileConverter\iReader;
+
+class XMLReader implements iReader
 {
-    public static function getContain(\SplFileObject $file): array
+    public function getContain(\SplFileObject $file): array
     {
         $contain = file_get_contents($file->getPathname());
         $xml = simplexml_load_string($contain, "SimpleXMLElement");

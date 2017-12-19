@@ -7,21 +7,26 @@ namespace FileConverter;
 use FileConverter\CSV\CSVReader;
 use FileConverter\JSON\JSONReader;
 use FileConverter\XML\XMLReader;
+use Prophecy\Exception\InvalidArgumentException;
 
 class Reader
 {
-    public static function loadFile(\SplFileObject $file): array
+    public function loadFile(\SplFileObject $file): array
     {
-        $type = $file->getExtension();
-        if ($type == "json"){
-            return JSONReader::getContain($file);
-        } elseif ($type == "xml"){
-            return XMLReader::getContain($file);
-        } elseif ($type == "csv"){
-            return CSVReader::getContain($file);
+        $reader = $this->getReader($file->getExtension());
+        return $reader->getContain($file);
+    }
+
+    private function getReader(string $input_format): iReader
+    {
+        if ($input_format == "json"){
+            return new JSONReader();
+        } elseif ($input_format == "xml"){
+            return new XMLReader();
+        } elseif ($input_format == "csv"){
+            return new CSVReader();
         } else{
-            echo "необрабатываемый формат";
-            return [];
+            throw new InvalidArgumentException("Unsupported type of input file");
         }
     }
 }

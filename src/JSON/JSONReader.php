@@ -8,9 +8,11 @@
 
 namespace FileConverter\JSON;
 
-class JSONReader
+use FileConverter\iReader;
+
+class JSONReader implements iReader
 {
-    public static function getContain(\SplFileObject $file): array
+    public function getContain(\SplFileObject $file): array
     {
         $contain = json_decode($file, true);
         return $contain;

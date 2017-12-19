@@ -8,11 +8,11 @@
 
 namespace FileConverter\CSV;
 
-use SebastianBergmann\CodeCoverage\Node\File;
+use FileConverter\iReader;
 
-class CSVReader
+class CSVReader implements iReader
 {
-    public static function getContain(\SplFileObject $file): array
+    public function getContain(\SplFileObject $file): array
     {
         $contain = array_map('str_getcsv', file($file->getPathname()));
         return $contain;

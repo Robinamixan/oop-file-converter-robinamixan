@@ -9,9 +9,11 @@
 namespace FileConverter\JSON;
 
 
-class JSONSaver
+use FileConverter\iSaver;
+
+class JSONSaver implements iSaver
 {
-    public static function save(array $contain, string $outputFilePath): void
+    public function saveArrayInFile(array $contain, string $outputFilePath): void
     {
         $file = fopen($outputFilePath, "w");
         fwrite($file, json_encode($contain));
